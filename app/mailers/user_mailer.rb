@@ -32,7 +32,7 @@ class UserMailer < BaseMandrillMailer
       'ADDRESS_2' => user.address2,
       'ADDRESS_INSTRUCTIONS' => user.delivery_instructions,
       'MOBILE' => user.phone,
-      'LINK_TO_ADMIN_PAGE' => "http://greenbeltgreens-stage.herokuapp.com/admin/users/#{user.id}/edit",
+      'LINK_TO_ADMIN_PAGE' => "http://admin.greenbeltgreens.com/admin/users/#{user.id}/edit",
       'LINK_TO_CUSTOMER_PAGE_ON_STRIPE' => "https://dashboard.stripe.com/test/customers/#{user.customer_id}"
     }
     body = mandrill_template('admin_email_template', merge_vars)
