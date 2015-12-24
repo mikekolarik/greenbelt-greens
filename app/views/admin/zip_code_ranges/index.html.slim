@@ -1,0 +1,9 @@
+h2 Ranges
+br/
+= link_to "Create Range", new_admin_zip_code_range_path, class: "m-button-submit"
+tbody
+  .row
+    - if @zip_code_ranges.blank? && !params[:page].present?
+      = render "blank"
+    - else
+      = render "list"

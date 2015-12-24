@@ -1,0 +1,70 @@
+@font-size-base: 16px;
+
+@import "theme/_bootswatch";
+
+.m-alert{
+  @extend .alert;
+}
+
+.m-alert-danger{
+  @extend .alert-danger;
+}
+
+.m-alert-info{
+  @extend .alert-info;
+}
+
+.m-badge{
+  @extend .badge;
+  font-size: 14px;
+  background-color: #F14D77;
+  font-weight: normal;
+}
+
+.m-badge-star{
+  @extend .badge;
+  font-size: 12px;
+  background-color: #fff;
+}
+
+.m-form-control{
+  @extend .form-control;
+}
+
+.m-img-circle{
+  @extend .img-circle;
+  max-width: 50px;
+}
+
+.m-caret{
+  @extend .caret;
+}
+
+.m-dropdown-menu{
+  @extend .dropdown-menu;
+  min-width: auto;
+  width: 100%;
+}
+
+.m-icon-list{
+  width: 25px;
+  height: 25px;
+}
+
+.m-icon-form{
+  width: 150px;
+  height: 150px;
+}
+
+.m-overlay {
+  color:#fff;
+  position:absolute;
+  z-index:2;
+  top:5%;
+  left:5%;
+  width:100%;
+}
+
+.m-radio{
+  @extend .radio;
+}

@@ -1,0 +1,58 @@
+  <!DOCTYPE html>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <html>
+  <head>
+    <title>Greenbelt Greens</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="col-xs-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 ">
+      <% if flash[:alert] %>
+        <div class="m-alert m-alert-danger" role="alert">
+          <span class="m-glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span class="sr-only">Error:</span>
+          <span class="flash-error"><%= flash[:alert] %></span>
+        </div>
+      <% end %>
+
+      <% if flash[:notice] %>
+        <div class="m-alert m-alert-info" role="alert">
+          <span class="m-glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span class="sr-only">Error:</span>
+          <span class="flash-notice"><%= flash[:notice] %></span>
+        </div>
+      <% end %>
+
+      <br>
+
+      <div class="row">
+        <div class="col-xs-3">
+          <h4>Admin Blocks:</h4>
+        </div>
+        <div class="col-xs-2 col-xs-push-7">
+          <%= link_to "Sign Out", destroy_user_session_path, :method => :delete, class: "m-button-submit"%>
+        </div>
+      </div>
+
+      <%= link_to "Intro Screen Page", admin_intro_screen_blocks_path, class: "m-admin-button"%>
+      <%= link_to "Zip Code", admin_zip_code_ranges_path, class: "m-admin-button"%>
+      <%= link_to "Dietary Goals", admin_dietary_goals_path, class: "m-admin-button"%>
+      <%= link_to "Dietary Preferences", admin_dietary_preferences_path, class: "m-admin-button"%>
+      <%= link_to "Meal Examples", admin_meal_examples_path, class: "m-admin-button"%>
+      <%= link_to "Ingredients", admin_ingredients_path, class: "m-admin-button"%>
+      <%= link_to "Categories", admin_ingredient_categories_path, class: "m-admin-button"%>
+      <%= link_to "Users", admin_users_path, class: "m-admin-button"%>
+      <%= link_to "Help Blocks", admin_help_blocks_path, class: "m-admin-button"%>
+      <%= link_to "Groups", admin_categories_groups_path, class: "m-admin-button"%>
+      <%= link_to "Meal Types", admin_meal_types_path, class: "m-admin-button"%>
+      <%= link_to "Popover Contents", admin_popover_contents_path, class: "m-admin-button"%>
+      <%= link_to "Referral codes", admin_referral_codes_path, class: "m-admin-button"%>
+
+      <%= yield %>
+
+    </div>
+
+  </body>
+  </html>

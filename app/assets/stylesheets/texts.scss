@@ -1,0 +1,30 @@
+.m-text-10{
+  font-size: 10px;
+}
+
+.m-text-12{
+  padding: 8px;
+  font-size: 12px;
+}
+
+.m-text-pink{
+  color: #F14D77;
+}
+
+.m-text-uppercase-12{
+  @extend .text-uppercase;
+  font-size: 12px;
+}
+
+.m-text-uppercase-10{
+  @extend .text-uppercase;
+  font-size: 10px;
+}
+
+.m-text-padding-top{
+  padding-top: 8px;
+}
+
+.m-text-padding-top-12{
+  padding-top: 12px;
+}

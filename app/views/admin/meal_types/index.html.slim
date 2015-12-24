@@ -1,0 +1,11 @@
+h2 Meal Types
+br/
+.row
+  .col-xs-2.col-sm-2.col-md-2.col-lg-1
+    = link_to "Create Type", new_admin_meal_type_path, class: "m-button-submit"
+tbody
+  .row
+    - if @meal_types.blank? && !params[:page].present?
+      = render "blank"
+    - else
+      = render "list"

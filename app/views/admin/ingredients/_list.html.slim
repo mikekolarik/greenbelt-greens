@@ -1,0 +1,13 @@
+= paginate @ingredients
+table.table.table-striped
+  thead
+    tr
+      th Name
+      th
+  - @ingredients.each do |ingredient|
+    tr
+      td = link_to ingredient.name, admin_ingredient_path(ingredient)
+      td = link_to "Delete Ingredient", admin_ingredient_path(ingredient), 
+                                       method: :delete,
+                                       data: { confirm: "Are you sure?" }
+= paginate @ingredients

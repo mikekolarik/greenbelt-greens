@@ -1,0 +1,63 @@
+<section>
+  <div class="page-header text-left">
+    <div class="row">
+      <div class="col-xs-1">
+      <%= link_to check_zip_code_path do %>
+        <span class="m-glyphicon-arrow-left" aria-label="Left Align"></span>
+      <%end%>
+      </div>
+      <div class="col-xs-10">
+        <p>Choose your preferences</p>
+      </div>
+    </div>
+  </div>
+
+
+  <%= form_tag(set_tags_conditions_path, method: "get") do %>
+
+    <div class="form-group has-feedback">
+      <input type="text" class="form-control" placeholder="Search tag"/>
+      <i class="glyphicon glyphicon-search form-control-feedback" aria-label="Left Align"></i>
+    </div>
+
+    <%= hidden_field_tag "liked_tag_ids", nil, class: "js-liked_ids"%>
+    <%= hidden_field_tag "must_have_tag_ids", nil, class: "js-must_have_ids"%>
+    <%= hidden_field_tag "disliked_tag_ids", nil, class: "js-disliked_ids"%>
+    <%= hidden_field_tag "hated_tag_ids", nil, class: "js-hated_ids"%>
+
+    <%= hidden_field_tag "zip_code", @zip_code %>
+
+    <div class="form-group">
+      <% @tags.each do |t| %>
+
+        <div class="btn-group">
+          <button type="button" class="js-tag-condition m-button-tag-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="glyphicon glyphicon-remove"></span> <%= t.name %>
+          </button>
+          <ul class="dropdown-menu">
+            <li class="js-tag-item" data-tag-id="<%= t.id %>">
+              <a class="js-must-have"><span class="m-glyphicon-ok"></span>Must have</a>
+            </li>
+            <li class="js-tag-item" data-tag-id="<%= t.id %>">
+              <a class="js-like"><span class="m-glyphicon-chevron-left-primary"></span>Like</a>
+            </li>
+            <li class="js-tag-item" data-tag-id="<%= t.id %>">
+              <a class="js-dislike"><span class="m-glyphicon-chevron-right-primary"></span>Dislike</a>
+            </li>
+            <li class="js-tag-item" data-tag-id="<%= t.id %>">
+              <a class="js-hate"><span class="m-glyphicon-remove"></span>Can't (hate)</a>
+            </li>
+          </ul>
+        </div>
+      <%end%>
+    </div>
+
+    <hr>
+
+    <div class="form-group text-left">
+      <div class="col-xs-offset-1">
+        <%= submit_tag("Submit", class: "m-button-submit")%>
+      </div>
+    </div>
+  <%end%>
+</section>

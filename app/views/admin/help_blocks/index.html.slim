@@ -1,0 +1,11 @@
+h2 Help Blocks
+br/
+.row
+  .col-xs-2.col-sm-2.col-md-2.col-lg-1
+    = link_to "Create Block", new_admin_help_block_path, class: "m-button-submit"
+tbody
+  .row
+    - if @help_blocks.blank? && !params[:page].present?
+      = render "blank"
+    - else
+      = render "list"

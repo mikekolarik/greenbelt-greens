@@ -1,0 +1,9 @@
+h2 Intro Screen Blocks
+br/
+= link_to "Create Block", new_admin_intro_screen_block_path, class: "m-button-submit"
+tbody
+  .row
+    - if @intro_screen_blocks.blank? && !params[:page].present?
+      = render "blank"
+    - else
+      = render "list"

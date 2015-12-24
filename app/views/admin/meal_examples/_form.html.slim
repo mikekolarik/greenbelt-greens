@@ -1,0 +1,44 @@
+= form_for [:admin, @meal_example] do |f|
+  - if @meal_example.errors.any?
+    #error_explanation
+      h2= pluralize(@meal_example.errors.count, "errors")
+      br/
+      ul
+        - @meal_example.errors.full_messages.each do |msg|
+          li
+            = msg
+  h5 User Avatar
+  - if @meal_example.user_avatar_url != nil
+    = image_tag @meal_example.user_avatar_url(:small_preview).to_s, class: "m-meal-example-user-avatar"
+  = f.file_field :user_avatar
+  br/
+  = f.text_field :user_name, class: "m-form-control", placeholder: "User Name"
+  br/
+  h5 User Goals
+  - DietaryGoal.all.each do |dg|
+    = f.check_box :user_goals, { :multiple => true }, dg.name, nil
+    = f.label :user_goals, dg.name
+    br/
+  br/
+  h5 User Dietary Preferences
+  - DietaryPreference.all.each do |dp|
+    = f.check_box :dietary_preferences, {:multiple => true}, dp.name, nil
+    = f.label :dietary_preferences, dp.name
+    br/
+  br/
+  = f.text_field :calories, class: "m-form-control", placeholder: "Calories"
+  br/
+  = f.text_field :carbs, class: "m-form-control", placeholder: "Carbs"
+  br/
+  = f.text_field :fat, class: "m-form-control", placeholder: "Fat"
+  br/
+  = f.text_field :protein, class: "m-form-control", placeholder: "Protein"
+  br/
+  h5 Meal Photo
+  - if @meal_example.meal_photo_url != nil
+    = image_tag @meal_example.meal_photo_url(:small_preview).to_s, class: "m-meal-example-meal-photo"
+  = f.file_field :meal_photo
+  br/
+  = f.text_area :meal_ingredients, class: "m-form-control", placeholder: "Meal Ingredients"
+  br/
+  = f.submit class: "m-button-submit"

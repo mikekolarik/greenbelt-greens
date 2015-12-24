@@ -1,0 +1,145 @@
+.m-glyphicon-arrow-left{
+  @extend .glyphicon;
+  @extend .glyphicon-arrow-left;
+  color:  #F14D77;
+}
+
+.m-glyphicon-remove{
+  @extend .glyphicon;
+  @extend .glyphicon-remove;
+}
+
+.m-glyphicon-chevron-left{
+  @extend .glyphicon;
+  @extend .glyphicon-chevron-left;
+  color: #000;
+  display: inline-block;
+}
+
+.m-glyphicon-chevron-right-primary{
+  @extend .glyphicon;
+  @extend .glyphicon-chevron-right;
+}
+
+.m-glyphicon-chevron-left-primary{
+  @extend .glyphicon;
+  @extend .glyphicon-chevron-left;
+}
+
+.m-glyphicon-ok{
+  @extend .glyphicon;
+  @extend .glyphicon-ok;
+}
+
+.m-glyphicon-chevron-right{
+  @extend .glyphicon;
+  @extend .glyphicon-chevron-right;
+  top: 45%;
+  color: #000;
+  display: inline-block;
+  font-size: 15px;
+}
+
+.m-glyphicon-envelope{
+  @extend .glyphicon;
+  @extend .glyphicon-envelope;
+  font-size: 20px;
+}
+
+.m-glyphicon-exclamation-sign{
+  @extend .glyphicon;
+  @extend .glyphicon-exclamation-sign;
+}
+
+.m-glyphicon-heart{
+  @extend .glyphicon;
+  @extend .glyphicon-heart;
+  font-size: 30px;
+  color:  #F14D77;
+}
+.m-glyphicon-heart-empty{
+  @extend .glyphicon;
+  @extend .glyphicon-heart;
+  font-size: 30px;
+  color: #C8CFD6;
+}
+
+.m-glyphicon-map{
+  @extend .glyphicon;
+  @extend .glyphicon-map-marker;
+  font-size: 200px;
+}
+
+.m-glyphicon-ok-sign-small{
+  @extend .glyphicon;
+  @extend .glyphicon-ok-sign;
+  font-size: 25px;
+  color: #C8CFD6
+}
+
+.m-glyphicon-ok-sign-small-pink{
+  @extend .glyphicon;
+  @extend .glyphicon-ok-sign;
+  font-size: 25px;
+  color: #F14D77;
+}
+
+.m-glyphicon-ok-sign{
+  @extend .glyphicon;
+  @extend .glyphicon-ok-sign;
+  font-size: 40px;
+  color: #C8CFD6
+}
+
+.m-glyphicon-ok-sign-pink{
+  @extend .glyphicon;
+  @extend .glyphicon-ok-sign;
+  font-size: 40px;
+  color: #F14D77;
+}
+
+.m-glyphicon-remove-sign{
+  @extend .glyphicon;
+  @extend .glyphicon-remove-sign;
+  font-size: 40px;
+}
+
+.m-glyphicon-remove-sign-small{
+  @extend .glyphicon;
+  @extend .glyphicon-remove-sign;
+  font-size: 25px;
+}
+
+.m-glyphicon-menu-hamburger{
+  @extend .glyphicon;
+  @extend .glyphicon-menu-hamburger;
+  font-size: 20px;
+  color: #F14D77;
+}
+
+.m-glyphicon-plus-sign{
+  @extend .glyphicon;
+  @extend .glyphicon-plus-sign;
+  font-size: 25px;
+  color: #F14D77;
+}
+
+.m-glyphicon-chevron-left{
+  @extend .glyphicon;
+  @extend .glyphicon-chevron-left;
+  font-size: 15px;
+}
+
+.m-menu-glyphicon-star-pink{
+  @extend .glyphicon;
+  @extend .glyphicon-star;
+  font-size: 10px;
+  color: #F14D77;
+}
+
+.m-menu-glyphicon-star{
+  @extend .glyphicon;
+  @extend .glyphicon-star;
+  font-size: 10px;
+  color: #C8CFD6;
+}

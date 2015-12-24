@@ -1,0 +1,15 @@
+= form_for [:admin, @user] do |f|
+  - if @user.errors.any?
+    #error_explanation
+      h2= pluralize(@user.errors.count, "errors")
+      br/
+      ul
+        - @user.errors.full_messages.each do |msg|
+          li
+            = msg
+  = f.text_field :email, autofocus: true, class: "m-form-control", placeholder: "Email"
+  = f.password_field :password, class: "m-form-control", placeholder: "Password"
+  = f.password_field :password_confirmation, class: "m-form-control", placeholder: "Confirmation"
+  
+  br/
+  = f.submit class: "m-button-submit"

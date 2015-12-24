@@ -1,0 +1,14 @@
+= form_for [:admin, @ingredient_category] do |f|
+  - if @ingredient_category.errors.any?
+    #error_explanation
+      h2= pluralize(@ingredient_category.errors.count, "errors")
+      br/
+      - @ingredient_category.errors.full_messages.each do |msg|
+        li
+          = msg
+        br/
+  .row
+    .col-xs-6
+      = f.text_field :name, class: "m-form-control", placeholder: "Name"
+  br/
+  = f.submit class: "m-button-submit"

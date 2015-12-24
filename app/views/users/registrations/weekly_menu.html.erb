@@ -1,0 +1,80 @@
+<section>
+  <div class="page-header text-left">
+    <div class="row">
+      <div class="col-xs-1 col-sm-1">
+        <%= link_to input_tags_path do %>
+          <span class="m-glyphicon-arrow-left" aria-label="Left Align"></span>
+        <%end%>
+      </div>
+      <div class="col-xs-10 col-sm-10">
+        <p>Weekly menu by your preference</p>
+      </div>
+    </div>
+  </div>
+
+  <%= form_tag(generate_user_weekly_menu_path, method: "get") do %>
+    <div class="form-group text-center">
+      <p class="m-text-capitalize"><%= @weekly_menu.date_from%> - <%= @weekly_menu.date_to%></p>
+    </div>
+
+    <hr>
+
+    <%= hidden_field_tag "zip_code", @zip_code%>
+
+    <%= hidden_field_tag "monday_meal", nil, class: "js-monday"%>
+    <%= hidden_field_tag "tuesday_meal", nil, class: "js-tuesday"%>
+    <%= hidden_field_tag "wednesday_meal", nil, class: "js-wednesday"%>
+    <%= hidden_field_tag "thursday_meal", nil, class: "js-thursday"%>
+    <%= hidden_field_tag "friday_meal", nil, class: "js-friday"%>
+
+    <% @weekly_menu.daily_menus.each_with_index do |daily_menu, index| %>
+
+      <div class="form-group">
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#<%= index %>" aria-expanded="true" aria-controls="<%= index %>">
+                  <div class="row">
+                    <div class="col-xs-4 col-sm-4">
+                      <p class="m-text-padding-top m-text-uppercase-10"><strong> <%= daily_menu.day_of_week %> </strong></p>
+                    </div>
+                    <div class="col-xs-6 col-sm-5 col-sm-push-5">
+                      <p class="m-text-padding-top m-text-uppercase-10"><strong>dolor res eiunt</strong></p>
+                    </div>
+                  </div>
+                </a>
+              </h4>
+            </div>
+
+            <div id="<%= index %>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+              <div class="panel-body">
+                <% daily_menu.meals.each do |meal| %>
+                  <div class="list-group">
+                    <button type="button" class="list-group-item">
+                      <div class="js-meal" data-day="<%= daily_menu.day_of_week%>" data-meal-id="<%= meal.id%>">
+                        <%= image_tag meal.meal_picture_url(:small_meal_picture).to_s%>
+                        <br>
+                        <%= meal.name%>
+                        <br>
+                        <%= meal.description%>
+                        <br>
+                        <%= meal.vendor%>
+                      </div>
+                    </button>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%end%>
+
+    <div class="form-group text-left">
+      <div class="col-xs-offset-1 col-sm-offset-1">
+        <%= submit_tag("Next", class: "m-button-submit")%>
+      </div>
+    </div>
+  <% end %>
+</section>

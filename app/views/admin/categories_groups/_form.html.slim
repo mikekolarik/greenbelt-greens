@@ -1,0 +1,37 @@
+= form_for [:admin, @group] do |f|
+  - if @group.errors.any?
+    #error_explanation
+      h2= pluralize(@group.errors.count, "errors")
+      br/
+      - @group.errors.full_messages.each do |msg|
+        li
+          = msg
+        br/
+  .row
+    .col-xs-6
+      = f.text_field :name, class: "m-form-control", placeholder: "Name"
+      = f.text_field :order_index, class: "m-form-control", placeholder: "Order index"
+  br/
+
+  - unless @group.ingredient_categories.blank?
+    .form-group
+      h3
+       | Categories in group
+      br
+      - @group.ingredient_categories.each do |group_category|
+        = check_box_tag "group_categories_ids[]", group_category.id, true
+        = label_tag group_category.name
+
+    hr
+
+  - unless IngredientCategory.where(categories_group_id: nil).blank?
+    .form-group
+      h3
+        | All categories
+      br
+      - IngredientCategory.all.each do |category|
+        - unless category.categories_group_id
+          = check_box_tag "categories_ids[]", category.id, false
+          = label_tag category.name
+
+  = f.submit class: "m-button-submit"

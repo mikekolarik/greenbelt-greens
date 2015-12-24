@@ -1,0 +1,11 @@
+h2 Referral Codes
+br/
+.row
+  .col-xs-2.col-sm-2.col-md-2.col-lg-1
+    = link_to "Create Referral code", new_admin_referral_code_path, class: "m-button-submit"
+tbody
+  .row
+    - if @referral_codes.blank? && !params[:page].present?
+      = render "blank"
+    - else
+      = render "list"

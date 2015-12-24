@@ -1,0 +1,10 @@
+h2 Zip Codes Range
+br/
+= form_tag(admin_zip_codes_range_path, method: "get") do
+  .row
+    .col-xs-6
+      = text_field_tag :zip_codes_range_min, nil, placeholder: "From", class: "m-form-control"
+    .col-xs-6
+      = text_field_tag :zip_codes_range_max, nil, placeholder: "To", class: "m-form-control"
+  br/
+  = submit_tag "Enter", class: "m-button-submit"

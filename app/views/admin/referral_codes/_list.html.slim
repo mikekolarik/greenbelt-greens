@@ -1,0 +1,20 @@
+= paginate @referral_codes
+table.table.table-striped
+  thead
+    tr
+      th Secret code
+      th Owner
+      th Referrals
+  - @referral_codes.each do |referral_code|
+    tr
+      td
+        = link_to referral_code.secret_code, admin_referral_code_path(referral_code)
+        td
+          = referral_code.owner_email
+        td
+          = referral_code.referral_emails.count
+        td
+          = link_to "Delete Referral code", admin_referral_code_path(referral_code),
+                                   method: :delete,
+                                   data: { confirm: "Are you sure?" }
+= paginate @referral_codes

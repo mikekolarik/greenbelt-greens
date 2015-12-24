@@ -1,0 +1,16 @@
+= paginate @dietary_preferences
+table.table.table-striped
+  thead
+    th Name
+  - @dietary_preferences.each do |dietary_preference|
+    tr
+      td
+        = link_to dietary_preference.name, admin_dietary_preference_path(dietary_preference)
+        - if dietary_preference.picture_url != nil
+          td = image_tag dietary_preference.picture_url.to_s, class: "m-icon-list"
+        - else
+          td = "No image" 
+        td = link_to "Delete Preference", admin_dietary_preference_path(dietary_preference),
+                                         method: :delete,
+                                         data: { confirm: "Are you sure?" }
+= paginate @dietary_preferences

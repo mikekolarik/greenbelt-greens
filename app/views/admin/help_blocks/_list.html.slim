@@ -1,0 +1,15 @@
+= paginate @help_blocks
+table.table.table-striped
+  thead
+    th Help Blocks List
+  - @help_blocks.each do |help_block|
+    tr
+      td
+        = link_to help_block.key, admin_help_block_path(help_block)
+        td
+          = link_to help_block.description, admin_help_block_path(help_block)
+        td
+          = link_to "Delete Block", admin_help_block_path(help_block),
+                                   method: :delete,
+                                   data: { confirm: "Are you sure?" }
+= paginate @help_blocks

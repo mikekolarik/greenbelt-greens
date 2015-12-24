@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<html>
+<head>
+  <title>Greenbelt Greens</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="col-xs-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 ">
+    <% if flash[:alert] %>
+      <div class="m-alert m-alert-danger" role="alert">
+        <span class="m-glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        <span class="flash-error"><%= flash[:alert] %></span>
+      </div>
+    <% end %>
+
+    <% if flash[:notice] %>
+      <div class="m-alert m-alert-info" role="alert">
+        <span class="m-glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        <span class="flash-notice"><%= flash[:notice] %></span>
+      </div>
+    <% end %>
+
+    <%= yield %>
+
+  </div>
+
+</body>
+</html>
