@@ -40,7 +40,7 @@ module.exports = function() {
                 portSocketEndpoint: ':19292'
             },
             production: {
-                domainEndpoint: 'greenbeltgreens-stage.herokuapp.com',
+                domainEndpoint: 'greenbeltgreens-production.herokuapp.com',
                 portEndpoint: '',
                 portSocketEndpoint: ':19292'
             }
