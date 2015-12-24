@@ -22,6 +22,9 @@ var localenv = environments.make('local');
 
 var replacer = require('gulp-replace');
 
+var fs = require('fs');
+var s3 = require('gulp-s3');
+
 /**
  * yargs variables can be passed in to alter the behavior, when present.
  * Example: gulp serve-dev
