@@ -80,7 +80,4 @@ test:
 #
 production:
   <<: *default
-  host: ec2-54-83-203-50.compute-1.amazonaws.com
-  database: dfvjci71e2rvn2
-  username: tqmcqkmisupuml
-  password: <%= ENV['MEALTICKET_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
