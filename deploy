@@ -9,7 +9,7 @@ echo " "
 if [ "$1" == "prod" ]
 then
     echo "=== Start deploying to = production ======"
-    gulp clean && NODE_ENV=production gulp build && gulp scp:prod-1
+    gulp clean && NODE_ENV=production gulp build && gulp upload-live
     echo "=== End of deploying to = production ====="
 fi
 

@@ -55,6 +55,13 @@ gulp.task('scp:prod-1', function(cb) {
     }, cb);
 });
 
+gulp.task('upload-live', function() {
+    var awsCredentials = JSON.parse(require('fs').readFileSync(
+        userHome + '/.elasticbeanstalk/aws_greenbeltgreens_live.json'
+    ));
+    return gulp.src(config.build + '**').pipe(s3(awsCredentials));
+});
+
 /**
  * List the available gulp tasks
  */
