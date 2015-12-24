@@ -2,6 +2,7 @@ class ReferralCode < ActiveRecord::Base
 
   belongs_to :user
 
+
   validates_presence_of :secret_code
   validates_uniqueness_of :secret_code
 
