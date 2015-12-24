@@ -1,9 +1,0 @@
-h2 Popover Contents
-br/
-= link_to "Create Popover Content", new_admin_popover_content_path, class: "m-button-submit"
-tbody
-  .row
-    - if @intro_screen_blocks.blank? && !params[:page].present?
-      = render "blank"
-    - else
-      = render "list"
