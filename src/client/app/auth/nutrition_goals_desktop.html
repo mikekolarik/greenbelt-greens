@@ -1,0 +1,60 @@
+<div mt-backstage class="backstage" style="display: block;">
+    <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+    </div>
+</div>
+<page-desktop-header></page-desktop-header>
+<div class="main row" resizable ng-style="{minHeight: windowHeight - 62 - 41}">
+    <div class="col-xs-4">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <mt-progress-bar number-of-dots="7" selected-index="1"></mt-progress-bar>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="text-center">
+                    Nutritional Goals
+                    <img src="../images/information.svg" width="34" style="margin-top: -5px;" ng-hide="vm.model.infoBlocks['nutrition_goals']" ng-click="vm.model.infoBlocks['nutrition_goals'] = !vm.model.infoBlocks['nutrition_goals']">
+                    <img src="../images/close.svg" ng-show="vm.model.infoBlocks['nutrition_goals']" ng-click="vm.model.infoBlocks['nutrition_goals'] = !vm.model.infoBlocks['nutrition_goals']">
+                </h2>
+                <p id="infoBlock" class="infoBlock" ng-show="vm.model.infoBlocks['nutrition_goals']">
+                    {{getInfoByKey('nutrition_goals')}}
+                </p>
+                <p class="text-center">How about any nutritional goals? Please select any that apply.</p>
+            </div>
+        </div>
+        <div class="row goals-list">
+            <div class="col-xs-4" ng-repeat="goal in vm.model.user.data.dietaryGoals">
+                <div class="{{goal.selected ? 'goals active' : 'goals'}}" ng-click="vm.menu.select(goal)">
+                    <div class="goals-image" style="background-image: url('{{goal.picture}}');"></div>
+                    <p class="text-center"><small><strong>{{goal.name}}</strong></small></p>
+                    <div class="{{goal.selected ? 'select active' : 'select'}}"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <div class="mask-btns" ng-click="vm.menu.goToDietaryPreferences()">
+                    <div class="action-button grey-btn">Back</div>
+                </div>
+                <div class="mask-btns" ng-click="vm.menu.goToIngredientPreferences()">
+                    <div class="action-button green-btn big-btn">Next</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-8 none-right-padding">
+        <div class="image">
+            <div class="logo"></div>
+            <img src="../../images/site/nutrition_ill.jpg" alt="How do you eat" resizable ng-style="{height: windowHeight - 62 - 41}" class="fill-image">
+        </div>
+    </div>
+</div>
+<page-desktop-footer></page-desktop-footer>
+
+<script>
+    ga('send', 'event', 'page', 'goals_page');
+</script>

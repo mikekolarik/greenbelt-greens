@@ -1,0 +1,282 @@
+<div mt-backstage class="backstage" style="display: block;">
+    <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+    </div>
+</div>
+
+<page-desktop-header></page-desktop-header>
+<div class="main row" resizable ng-style="{minHeight: windowHeight - 62 - 41}">
+    <div class="col-xs-4" resizable ng-style="{height: windowHeight - 62 - 41}" style="overflow-y: auto;overflow-x: hidden;">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <mt-progress-bar number-of-dots="7" selected-index="6"></mt-progress-bar>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="text-center">
+                    Delivery & Payment
+                </h2>
+                <div class="col-xs-12">
+                    <p class="text-center text-main-color">
+                        Your first delivery will be on Sunday, {{vm.model.deliveryDate | date: 'MMMM d, yyyy'}}, between {{vm.model.user.data.deliveryRangeWeekendSelected.start}} and {{vm.model.user.data.deliveryRangeWeekendSelected.end}}.
+                    </p>
+                </div>
+                <p class="text-center">
+                    Delivery Address
+                    <img src="../images/information.svg" width="34" style="margin-top: -5px;" ng-hide="vm.model.infoBlocks['delivery_address']" ng-click="vm.model.infoBlocks['delivery_address'] = !vm.model.infoBlocks['delivery_address']">
+                    <img src="../images/close.svg" ng-show="vm.model.infoBlocks['delivery_address']" ng-click="vm.model.infoBlocks['delivery_address'] = !vm.model.infoBlocks['delivery_address']">
+                </p>
+                <p id="infoBlock" class="infoBlock" ng-show="vm.model.infoBlocks['delivery_address']">
+                    {{getInfoByKey('delivery_address')}}
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="col-xs-12">
+                    <form name="deliveryPayment" novalidate class="reg-form">
+                        <div class="row">
+                            <md-input-container class="col-xs-12">
+                                <label>First name</label>
+                                <input name="firstName" ng-model="vm.model.user.data.firstName" type="text" required>
+                                <div ng-messages="deliveryPayment.firstName.$error" ng-if="deliveryPayment.firstName.$touched" class="mt-validation-messages">
+                                    <div ng-message="required" class="message-error">First name is required</div>
+                                </div>
+                                <div ng-messages="deliveryPayment.firstName.$error" ng-if="!deliveryPayment.firstName.$touched" class="mt-validation-messages"></div>
+                            </md-input-container>
+                        </div>
+                        <div class="row">
+                            <md-input-container class="col-xs-12">
+                                <label>Last name</label>
+                                <input name="lastName" ng-model="vm.model.user.data.lastName" type="text" required>
+                                <div ng-messages="deliveryPayment.lastName.$error" ng-if="deliveryPayment.lastName.$touched" class="mt-validation-messages">
+                                    <div ng-message="required" class="message-error">Last name is required</div>
+                                </div>
+                                <div ng-messages="deliveryPayment.lastName.$error" ng-if="!deliveryPayment.lastName.$touched" class="mt-validation-messages"></div>
+                            </md-input-container>
+                        </div>
+                        <div class="row">
+                            <md-input-container class="col-xs-12">
+                                <label>Street address</label>
+                                <input name="streetAddress" ng-model="vm.model.user.data.streetAddress" type="text" required>
+                                <div ng-messages="deliveryPayment.streetAddress.$error" ng-if="deliveryPayment.streetAddress.$touched" class="mt-validation-messages">
+                                    <div ng-message="required" class="message-error">Street address is required</div>
+                                </div>
+                                <div ng-messages="deliveryPayment.streetAddress.$error" ng-if="!deliveryPayment.streetAddress.$touched" class="mt-validation-messages"></div>
+                            </md-input-container>
+                        </div>
+                        <div class="row">
+                            <md-input-container class="col-xs-12">
+                                <label>Street address 2</label>
+                                <input ng-model="vm.model.user.data.streetAddress2" type="text">
+                            </md-input-container>
+                        </div>
+                        <div class="row">
+                            <md-input-container class="col-xs-6">
+                                <label style="background: #fff;">Phone</label>
+                                <input name="phone" ng-model="vm.model.user.data.phone" type="text" required ng-pattern="/^\d{10}$/" ui-mask="{{'(999) 999-9999'}}">
+                                <div ng-messages="deliveryPayment.phone.$error" ng-if="deliveryPayment.phone.$touched" class="mt-validation-messages">
+                                    <div ng-message="required" class="message-error">Phone number is required</div>
+                                    <div ng-message="pattern" class="message-error">Please, enter a valid phone number</div>
+                                </div>
+                                <div ng-messages="deliveryPayment.phone.$error" ng-if="!deliveryPayment.phone.$touched" class="mt-validation-messages"></div>
+                            </md-input-container>
+                            <md-input-container class="col-xs-6">
+                                <label>ZIP code</label>
+                                <input ng-model="vm.model.user.data.zipCode" type="text" readonly>
+                            </md-input-container>
+                        </div>
+                        <div class="row">
+                            <md-input-container class="col-xs-12">
+                                <label>Detailed delivery instructions</label>
+                                <textarea ng-model="vm.model.user.data.deliveryInstructions" type="text" resize="none" rows="3" placeholder="E.g. leave at front doorstep for morning deliveries"></textarea>
+                            </md-input-container>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="bg-white col-xs-12">
+                    <form name="referralCode" class="row">
+                        <md-input-container class="col-sx-6 col-sm-6 col-md-8">
+                            <label>Referral code</label>
+                            <input name="referralCode" ng-model="vm.model.user.data.referralCode" ng-change="vm.menu.clearRefCodeError()" type="text" ng-disabled="vm.model.disableCode">
+                            <div ng-messages="referralCode.referralCode.$error" ng-if="referralCode.referralCode.$touched" class="mt-validation-messages">
+                                <div ng-message="code_error" class="message-error">Invalid referral code</div>
+                                <div ng-message="code_did_not_checked" class="message-error">Please, add your code</div>
+                            </div>
+                            <div ng-messages="referralCode.referralCode.$error" ng-if="!referralCode.referralCode.$touched" class="mt-validation-messages"></div>
+                        </md-input-container>
+                        <md-input-container class="col-xs-6 col-sm-6 col-md-4">
+                            <div class="mask-btns text-right" ng-click="!vm.model.disableCode && vm.menu.checkReferralCode()">
+                                <div class="action-button green-btn big-btn add-code" style="padding: 8px;">Add code</div>
+                            </div>
+                        </md-input-container>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h3 class="text-center">
+                    Payment information
+                </h3>
+                <p class="infoBlock">
+                    You will receive future deliveries at {{vm.model.user.data.selectedPlan.numberOfMeals * (vm.model.user.data.selectedPlan.price + vm.model.user.data.selectedPlan.delivery) | currency}} per week, charged on {{vm.model.deliveryDate | date: 'EEEE'}}.  You can skip a week or cancel your account at any time with 6 days notice.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="col-xs-12">
+                    <form name="cardInfo" novalidate class="reg-form">
+                        <div class="row">
+                            <md-input-container class="col-xs-12">
+                                <label>Card holder</label>
+                                <input name="cardHolder" ng-model="vm.model.user.data.cardHolder" type="text" required>
+                                <div ng-messages="cardInfo.cardHolder.$error" ng-if="cardInfo.cardHolder.$touched" class="mt-validation-messages">
+                                    <div ng-message="required" class="message-error">Card holder name is required</div>
+                                </div>
+                                <div ng-messages="cardInfo.cardHolder.$error" ng-if="!cardInfo.cardHolder.$touched" class="mt-validation-messages"></div>
+                            </md-input-container>
+                        </div>
+                        <div class="row">
+                            <md-input-container class="col-xs-12">
+                                <label>Card number</label>
+                                <input name="cardNumber" ng-model="vm.model.user.data.cardNumber" ng-change="vm.menu.clearStripeError('cardNumber')" type="text" required ng-pattern="/^\d+$/">
+                                <div ng-messages="cardInfo.cardNumber.$error" ng-if="cardInfo.cardNumber.$touched" class="mt-validation-messages">
+                                    <div ng-message="required" class="message-error">Card number is required</div>
+                                    <div ng-message="pattern" class="message-error">Please, enter a valid card number</div>
+                                    <div ng-message="stripe_error" class="message-error">{{vm.model.stripeErrorMessage}}</div>
+                                </div>
+                                <div ng-messages="cardInfo.cardNumber.$error" ng-if="!cardInfo.cardNumber.$touched" class="mt-validation-messages"></div>
+                            </md-input-container>
+                        </div>
+                        <div class="row">
+                            <md-input-container class="col-xs-5">
+                                <label>MM/YYYY</label>
+                                <input name="expiryDate" ng-model="vm.model.user.data.expiryDate" ng-change="vm.menu.clearStripeError('expiryDate')" type="text" required ng-pattern="/^\d\d\/\d\d\d\d$/">
+                                <div ng-messages="cardInfo.expiryDate.$error" ng-if="cardInfo.expiryDate.$touched" class="mt-validation-messages">
+                                    <div ng-message="required" class="message-error">Card expiry date is required</div>
+                                    <div ng-message="pattern" class="message-error">Please, enter a valid card expiry date</div>
+                                    <div ng-message="stripe_error" class="message-error">{{vm.model.stripeErrorMessage}}</div>
+                                </div>
+                                <div ng-messages="cardInfo.expiryDate.$error" ng-if="!cardInfo.expiryDate.$touched" class="mt-validation-messages"></div>
+                            </md-input-container>
+                            <md-input-container class="col-xs-3">
+                                <label>CSV</label>
+                                <input name="csv" ng-model="vm.model.user.data.csv" ng-change="vm.menu.clearStripeError('csv')" type="text" required ng-pattern="/^\d\d\d$/">
+                                <div ng-messages="cardInfo.csv.$error" ng-if="cardInfo.csv.$touched" class="mt-validation-messages">
+                                    <div ng-message="required" class="message-error">Card csv is required</div>
+                                    <div ng-message="pattern" class="message-error">Please, enter a valid card csv</div>
+                                    <div ng-message="stripe_error" class="message-error">{{vm.model.stripeErrorMessage}}</div>
+                                </div>
+                                <div ng-messages="cardInfo.csv.$error" ng-if="!cardInfo.csv.$touched" class="mt-validation-messages"></div>
+                            </md-input-container>
+                            <md-input-container class="col-xs-4">
+                                <div class="stripe">
+                                    <img src="../images/Stripe.png" alt="Powered by Stripe">
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 text-center" style="height: 71px">
+                <!--<div class="mask-btns" ng-click="vm.menu.goToAccountCreation()">-->
+                <!--&lt;!&ndash;<div class="action-button grey-btn">Back</div>&ndash;&gt;-->
+                <!--</div>-->
+                <div class="mask-btns" ng-if="!vm.menu.signUpInProcess" ng-click="vm.menu.signUp()">
+                    <div class="action-button green-btn big-btn" style="width: 179px; height: 46px;">Place Order</div>
+                </div>
+                <div class="mask-btns" ng-if="vm.menu.signUpInProcess">
+                    <div class="action-button grey-btn big-btn" style="width: 179px; height: 46px;">
+                        <div style="top: 20px;" class="spinner">
+                            <div class="bounce1"></div>
+                            <div class="bounce2"></div>
+                            <div class="bounce3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="padding-bottom: 10px;">
+            <div class="col-xs-12">
+                <p class="text-left text-main-color">
+                    By clicking "Place Order" you agree you are purchasing a
+                    continuous subscription, and that you will receive deliveries,
+                    and be billed to your designated payment method, weekly,
+                    unless you skip a delivery or cancel your subscription at least 6 days before
+                    your next delivery by <a href="mailto:hi@greenbeltgreens.com">contacting us</a> and following the instructions
+                    in our response. For more information see our <a href="#" ng-click="vm.menu.popupTermsOfUse()">Terms of Use</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-8 none-right-padding" style="padding-left: 0;">
+        <div class="image">
+            <div class="check">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="big-green-logo"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p class="text-center text-main-color">{{vm.model.user.data.selectedPlan.title}} subscription</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p class="text-left text-grey">Meal price<strong class="text-main-color pull-right">{{vm.model.user.data.selectedPlan.numberOfMeals * vm.model.user.data.selectedPlan.price | currency}}</strong></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p class="text-left text-grey">Delivery<strong class="text-main-color pull-right">{{vm.model.user.data.selectedPlan.numberOfMeals * vm.model.user.data.selectedPlan.delivery | currency}}</strong></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p class="text-left text-grey">Discount<strong class="text-main-color pull-right">{{vm.model.user.data.discount | currency}}</strong></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p class="text-left text-grey">Charge total<strong class="text-main-color pull-right">{{vm.model.user.data.selectedPlan.numberOfMeals * (vm.model.user.data.selectedPlan.price + vm.model.user.data.selectedPlan.delivery) - vm.model.user.data.discount | currency}}</strong></p>
+                            </div>
+                            <p><br></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <img src="../../images/site/tweak_ill.jpg" alt="Tweak your plan" resizable ng-style="{height: windowHeight - 62 - 41}" class="fill-image">
+        </div>
+    </div>
+    </div>
+</div>
+<page-desktop-footer></page-desktop-footer>
+
+<script>
+    ga('send', 'event', 'page', 'delivery_and_payment_page');
+</script>

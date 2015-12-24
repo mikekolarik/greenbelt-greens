@@ -1,0 +1,42 @@
+@dot-width: 10px;
+@dot-height: 10px;
+@dot-rounded: 30px;
+@dot-margin: 5px 7px;
+@dot-background: #B1BEC6;
+@dot-background-active:	#607C8B;
+
+
+.owl-theme {
+  // Styling dots
+  .owl-nav.disabled + .owl-dots {
+    margin-top: 10px;
+  }
+  .owl-dots {
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+
+    .owl-dot {
+      display: inline-block;
+      zoom: 1;
+      *display: inline;
+
+      span {
+        width: @dot-width;
+        height: @dot-height;
+        margin: @dot-margin;
+        background: @dot-background;
+        display: block;
+        -webkit-backface-visibility: visible;
+        transition: opacity 200ms ease;
+        border-radius: 30px;
+      }
+
+      &.active,
+      &:hover {
+        span {
+          background: @dot-background-active;
+        }
+      }
+    }
+  }
+}

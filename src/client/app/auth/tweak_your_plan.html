@@ -1,0 +1,182 @@
+<div mt-backstage class="backstage" style="display: block;">
+    <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 text-center">
+        <mt-progress-bar number-of-dots="7" selected-index="4"></mt-progress-bar>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <h2 class="text-center">
+            <!--Tweak your plan-->
+            Pick Your Plan
+            <!--<img src="../images/information.svg" width="34" style="margin-top: -5px;" ng-hide="vm.model.infoBlocks['tweak_your_plan']" ng-click="vm.model.infoBlocks['tweak_your_plan'] = !vm.model.infoBlocks['tweak_your_plan']">-->
+            <!--<img src="../images/close.svg" ng-show="vm.model.infoBlocks['tweak_your_plan']" ng-click="vm.model.infoBlocks['tweak_your_plan'] = !vm.model.infoBlocks['tweak_your_plan']">-->
+        </h2>
+        <!--<p id="infoBlock" class="infoBlock" ng-show="vm.model.infoBlocks['tweak_your_plan']">-->
+            <!--{{getInfoByKey('tweak_your_plan')}}-->
+        <!--</p>-->
+        <!--<p class="text-center">We'll deliver your meals once a week</p>-->
+        <p class="text-center">Meals are delivered twice per week to maximize freshness. In your area, we deliver on <strong>Sunday evenings</strong> and <strong>Wednesday mornings</strong>. Don't worry - if you're not home, we'll leave your meals with an ice pack to keep them cool.</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <h3 class="text-center">
+            Weekend Delivery
+        </h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12" style="margin-bottom: 15px;">
+        <div class="row" style="overflow:hidden;">
+            <div class="col-xs-12 delivery-time">
+                <div class="col-xs-3 delivery-check-item text-center" ng-repeat="deliveryRangeWeekend in vm.model.deliveryRangesWeekend" >
+                    <div ng-click="vm.menu.selectDeliveryRangeWeekend(deliveryRangeWeekend)">
+                        <div class="delivery-time-check {{deliveryRangeWeekend.selected ? 'active' : ''}}"></div>
+                    </div>
+                    <div class="text-center clearfix">
+                        <div class="text-main-color delivery-time-hours">
+                            {{deliveryRangeWeekend.start}}-{{deliveryRangeWeekend.end}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <h3 class="text-center">
+            Weekday Delivery
+        </h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12" style="margin-bottom: 15px;">
+        <div class="row" style="overflow:hidden;">
+            <div class="col-xs-12 delivery-time">
+                <div class="col-xs-3 delivery-check-item text-center" ng-repeat="deliveryRangeWeekday in vm.model.deliveryRangesWeekday" >
+                    <div ng-click="vm.menu.selectDeliveryRangeWeekday(deliveryRangeWeekday)">
+                        <div class="delivery-time-check {{deliveryRangeWeekday.selected ? 'active' : ''}}"></div>
+                    </div>
+                    <div class="text-center clearfix">
+                        <div class="text-main-color delivery-time-hours">
+                            {{deliveryRangeWeekday.start}}-{{deliveryRangeWeekday.end}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <h3 class="text-center">
+            Meals per week
+            <img src="../images/information.svg" width="34" style="margin-top: -5px;" ng-hide="vm.model.infoBlocks['meals_per_week']" ng-click="vm.model.infoBlocks['meals_per_week'] = !vm.model.infoBlocks['meals_per_week']">
+            <img src="../images/close.svg" ng-show="vm.model.infoBlocks['meals_per_week']" ng-click="vm.model.infoBlocks['meals_per_week'] = !vm.model.infoBlocks['meals_per_week']">
+        </h3>
+        <p id="infoBlock_2" class="infoBlock" ng-show="vm.model.infoBlocks['meals_per_week']">
+            {{getInfoByKey('meals_per_week')}}
+        </p>
+    </div>
+</div>
+
+<div class="row" style="margin-bottom: 15px;">
+    <div class="col-xs-6" ng-repeat="mealPlan in vm.model.mealPlans">
+        <div class="{{mealPlan.selected ? 'persons active' : 'persons'}}" ng-click="vm.menu.selectMealPlan(mealPlan)">
+            <div class="persons-image" style="background-image: url('{{mealPlan.picture}}');"></div>
+            <p class="text-center"><small><strong>{{mealPlan.title}}</strong></small></p>
+            <!--<div class="{{persons.selected ? 'select-persons active' : 'select-persons'}}"></div>-->
+            <div class="select-persons {{mealPlan.selected ? 'active' : ''}}"></div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <table class="table meal-type-steps">
+            <tr>
+                <td ng-repeat="mealType in vm.model.mealTypes | orderBy: 'order'" class="text-center">
+                    <div class="text-main-color meal-type-steps-check-type">
+                        {{mealType.description}}
+                    </div>
+                </td>
+            </tr>
+            <tr class="line">
+                <td ng-repeat="mealType in vm.model.mealTypes" ng-click="vm.menu.selectMealType(mealType)">
+                    <div class="meal-type-steps-check {{mealType.selected ? 'active' : ''}}"></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <h3 class="text-center">
+            <!--Pricing summary-->
+            Total Meal Price
+            <img src="../images/information.svg" width="34" style="margin-top: -5px;" ng-hide="vm.model.infoBlocks['pricing_summary']" ng-click="vm.model.infoBlocks['pricing_summary'] = !vm.model.infoBlocks['pricing_summary']">
+            <img src="../images/close.svg" ng-show="vm.model.infoBlocks['pricing_summary']" ng-click="vm.model.infoBlocks['pricing_summary'] = !vm.model.infoBlocks['pricing_summary']">
+        </h3>
+        <p id="infoBlock_3" class="infoBlock" ng-show="vm.model.infoBlocks['pricing_summary']">
+            {{getInfoByKey('pricing_summary')}}
+        </p>
+
+    </div>
+</div>
+
+<div class="row padding-for-footer">
+    <div class="col-xs-12 text-center">
+        <div class="row">
+            <div class="col-xs-12">
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <p class="text-left">Meal price<strong class="text-main-color pull-right">{{vm.model.user.data.selectedPlan.price | currency}}</strong></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <p class="text-left">Delivery<strong class="text-main-color pull-right">{{vm.model.user.data.selectedPlan.delivery | currency}}</strong></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <p class="text-left">Total per Meal<strong class="text-main-color pull-right">{{vm.model.user.data.selectedPlan.price + vm.model.user.data.selectedPlan.delivery | currency}}</strong></p>
+            </div>
+            <p><br></p>
+        </div>
+    </div>
+</div>
+<div class="row bottom-btns">
+    <div class="col-xs-12 text-center">
+        <div class="mask-btns" ng-click="vm.menu.goToExampleMeals()">
+            <div class="action-button grey-btn">Back</div>
+        </div>
+        <div class="mask-btns" ng-click="vm.menu.goToAccountCreation()">
+            <div class="action-button green-btn" style="padding-left: 50px;padding-right: 50px;">Checkout</div>
+        </div>
+        <img src="../images/howitworks.svg" ng-click="showPopoverContent()" width="44" class="howitworks-icon">
+    </div>
+</div>
+
+<script>
+    ga('send', 'event', 'page', 'tweak_your_plan_page');
+</script>

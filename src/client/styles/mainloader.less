@@ -1,0 +1,100 @@
+//.ngplus-overlay-background {
+//    top: 0px;
+//    left: 0px;
+//    padding-left: 100px;
+//    position: absolute;
+//    z-index: 10000;
+//    height: 100%;
+//    width: 100%;
+//    background-color: #808080;
+//    opacity: 0.2;
+//}
+//
+//.ngplus-overlay-content {
+//    top: 0px;
+//    left: 0px;
+//    position: absolute;
+//    border: 1px solid #000;
+//    background-color: #fff;
+//    font-weight: bold;
+//    height: 100%;
+//    width: 100%;
+//    z-index: 10000;
+//    text-align: center;
+//}
+
+/*Optional Animations*/
+.dissolve-animation.ng-hide-remove,
+.dissolve-animation.ng-hide-add {
+    display: inline !important;
+    -webkit-transition: 0.5s linear all;
+    -moz-transition: 0.5s linear all;
+    -o-transition: 0.5s linear all;
+    transition: 0.5s linear all;
+}
+
+.dissolve-animation.ng-hide-remove.ng-hide-remove-active,
+.dissolve-animation.ng-hide-add {
+    opacity: 1;
+}
+
+.dissolve-animation.ng-hide-add.ng-hide-add-active,
+.dissolve-animation.ng-hide-remove {
+    opacity: 0;
+}
+
+/* css loader animated */
+
+.loader-overlay {
+
+}
+
+.spinner {
+    text-align: center;
+    z-index: 9999;
+    width: 80px;
+    height: 40px;
+    overflow: auto;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+}
+
+.spinner > div {
+    width: 18px;
+    height: 18px;
+    background-color: grey;
+
+    border-radius: 100%;
+    display: inline-block;
+    -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+    animation: bouncedelay 1.4s infinite ease-in-out;
+    /* Prevent first frame from flickering when animation starts */
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.spinner .bounce1 {
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+}
+
+@-webkit-keyframes bouncedelay {
+    0%, 80%, 100% { -webkit-transform: scale(0.0) }
+    40% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes bouncedelay {
+    0%, 80%, 100% {
+        transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+    } 40% {
+          transform: scale(1.0);
+          -webkit-transform: scale(1.0);
+      }
+}

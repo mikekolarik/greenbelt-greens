@@ -1,0 +1,21 @@
+echo "========== usage: "
+echo "deploy to 'development' server: "
+echo "$ sh deploy dev "
+echo " "
+echo "deploy to 'production' server: "
+echo "$ sh deploy prod "
+echo " "
+
+if [ "$1" == "prod" ]
+then
+    echo "=== Start deploying to = production ======"
+    gulp clean && NODE_ENV=production gulp build && gulp scp:prod-1
+    echo "=== End of deploying to = production ====="
+fi
+
+if [ "$1" == "dev" ]
+then
+    echo "=== Start deploying to = development ======"
+    gulp clean && NODE_ENV=development gulp build && gulp scp:dev
+    echo "=== End of deploying to = development ====="
+fi

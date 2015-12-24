@@ -1,0 +1,112 @@
+<div mt-backstage class="backstage" style="display: block;">
+    <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+    </div>
+</div>
+
+<page-desktop-header></page-desktop-header>
+<div class="main row" resizable ng-style="{minHeight: windowHeight - 62 - 41}">
+    <div class="col-xs-4" resizable ng-style="{height: windowHeight - 62 - 41}" style="overflow-y: auto;overflow-x: hidden;">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <mt-progress-bar number-of-dots="7" selected-index="3"></mt-progress-bar>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="text-center">
+                    <strong>Testimonials</strong>
+                </h2>
+                <p class="text-center">Perfect! We'll send you fresh, customized  menus each week based on your profile. Here are some examples of what others are currently enjoying!</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12" style="position:relative; padding-left: 30px;">
+                <div ng-click="vm.menu.carouselPrev()" class="slide-btn slide-prev" style="left: 17px;top: 53%;"></div>
+                <div ng-click="vm.menu.carouselNext()" class="slide-btn slide-next" style="top: 53%;"></div>
+                <data-owl-carousel id="ex-meal-carousel-main" data-sync="#ex-meal-carousel" class="owl-carousel owl-theme testimonial-carousel-user-info" data-options="{
+                    loop: true,
+                    responsiveClass: true,
+                    singleItem: true,
+                    minHeight:300,
+                    items : 1,
+                    dots: false
+                    }">
+
+                    <div ng-repeat="meal in vm.model.exampleMeals" owl-carousel-item="" class="col-xs-12">
+                        <div class="row hook"></div>
+                        <div class="box-shadow">
+                            <div class="user-avatar text-center row">
+                                <img ng-src="{{meal.user_avatar}}">
+                                <small>{{meal.user_name}}</small>
+                            </div>
+                            <div class="row attr-btns">
+                                <div class="col-xs-12 text-center">
+                                    <div class="pink-btn small-btn" ng-repeat="user_goal in meal.user_goals">{{user_goal}}</div>
+                                </div>
+                                <div class="col-xs-12 text-center">
+                                    <div class="green-btn small-btn" ng-repeat="user_goal in meal.dietary_preferences">{{user_goal}}</div>
+                                </div>
+                            </div>
+                            <p class="meal-description"><small>{{meal.meal_ingredients}}</small></p>
+                            <div class="owl-image">
+                                <div class="dish-info">
+                                    <div class="col-xs-3">
+                                        <strong>{{meal.calories}}</strong><br>
+                                        <small>Calories</small>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <strong>{{meal.carbs}}</strong><br>
+                                        <small>Carbs</small>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <strong>{{meal.fat}}</strong><br>
+                                        <small>Fat</small>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <strong>{{meal.protein}}</strong><br>
+                                        <small>Protein</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </data-owl-carousel>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <div class="mask-btns" ng-click="vm.menu.goToIngredients()">
+                    <div class="action-button grey-btn">Back</div>
+                </div>
+                <div class="mask-btns" ng-click="vm.menu.goToTweakYourPlan()">
+                    <div class="action-button green-btn big-btn">Next</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-8 none-right-padding" ng-if="vm.model.imagesLoaded">
+        <data-owl-carousel id="ex-meal-carousel" class="owl-carousel owl-theme testimonial-carousel" data-options="{
+        loop: true,
+        responsiveClass: true,
+        singleItem: true,
+        items : 1,
+        dots: false,
+        mouseDrag: false,
+        touchDrag: false
+        }">
+            <div ng-repeat="meal in vm.model.exampleMeals" owl-carousel-item="">
+                <div class="owl-image">
+                    <div style="background-image:url('{{meal.meal_photo}}');width: 100%;background-size: cover;" resizable ng-style="{height: windowHeight - 62 - 41}"></div>
+                </div>
+            </div>
+        </data-owl-carousel>
+    </div>
+</div>
+<page-desktop-footer></page-desktop-footer>
+
+<script>
+    ga('send', 'event', 'page', 'testimonials_page');
+</script>

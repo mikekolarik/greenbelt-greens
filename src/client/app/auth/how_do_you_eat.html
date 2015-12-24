@@ -1,0 +1,52 @@
+<div mt-backstage class="backstage" style="display: block;">
+    <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 text-center">
+        <mt-progress-bar number-of-dots="7" selected-index="0"></mt-progress-bar>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <h2 class="text-center">
+            <!--How do you eat-->
+            Dietary Preferences
+            <img src="../images/information.svg" width="34" style="margin-top: -5px;" ng-hide="vm.model.infoBlocks['how_do_you_eat']" ng-click="vm.model.infoBlocks['how_do_you_eat'] = !vm.model.infoBlocks['how_do_you_eat']">
+            <img src="../images/close.svg" ng-show="vm.model.infoBlocks['how_do_you_eat']" ng-click="vm.model.infoBlocks['how_do_you_eat'] = !vm.model.infoBlocks['how_do_you_eat']">
+        </h2>
+        <p id="infoBlock" class="infoBlock" ng-show="vm.model.infoBlocks['how_do_you_eat']">
+            {{getInfoByKey('how_do_you_eat')}}
+        </p>
+        <!--<p class="text-center">Please select one ore more of the following</p>-->
+        <p class="text-center">Great, let's start building your flavor profile! Are there dietary preferences we should be sure to accommodate?</p>
+    </div>
+</div>
+<div class="row prefences-list padding-for-footer">
+    <div class="col-xs-4" ng-repeat="preference in vm.model.user.data.dietaryPreferences">
+        <div class="{{preference.selected ? 'prefences active' : 'prefences'}}" ng-click="vm.menu.select(preference)">
+            <div class="prefences-image" style="background-image: url('{{preference.picture}}');"></div>
+            <p class="text-center"><small><strong>{{preference.name}}</strong></small></p>
+            <div class="{{preference.selected ? 'select active' : 'select'}}"></div>
+        </div>
+    </div>
+</div>
+<div class="row bottom-btns">
+    <div class="col-xs-12 text-center">
+        <div class="mask-btns" ng-click="vm.menu.goToSignUp()">
+            <div class="action-button grey-btn">Back</div>
+        </div>
+        <div class="mask-btns" ng-click="vm.menu.goToNutritionGoals()">
+            <div class="action-button green-btn big-btn">Next</div>
+        </div>
+        <img src="../images/howitworks.svg" ng-click="showPopoverContent()" width="44" class="howitworks-icon">
+    </div>
+</div>
+
+<script>
+    ga('send', 'event', 'page', 'preferences_page');
+</script>

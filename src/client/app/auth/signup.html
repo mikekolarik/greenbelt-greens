@@ -1,0 +1,83 @@
+<div mt-backstage class="backstage" style="display: block;">
+    <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+    </div>
+</div>
+
+<div class="row">
+
+    <!-- first image -->
+    <div class="image">
+        <div class="logo"></div>
+        <img ng-show="vm.model.zipCodeIsValid" ng-src="{{vm.model.images[0].picture}}" alt="Zip code" class="responsive-img">
+        <!-- third image -->
+        <img ng-show="!vm.model.zipCodeIsValid" alt="Sorry.." ng-src="{{vm.model.images[1].picture}}" alt="" class="responsive-img">
+    </div>
+    <!--<ui-gmap-google-map ng-if="vm.model.zipCodeIsValid && vm.model.zipCodeWasChecked" center="map.center" zoom="map.zoom">-->
+    <!--<ui-gmap-marker coords="map.marker" options="map.marker.options" idKey="1"></ui-gmap-marker>-->
+    <!--</ui-gmap-google-map>-->
+</div>
+<div class="row">
+    <div ng-show="vm.model.zipCodeIsValid" class="col-xs-12">
+        <h2 class="text-center">Live in Austin?</h2>
+    </div>
+</div>
+<div ng-show="vm.model.zipCodeIsValid" class="row">
+    <div class="col-xs-12">
+        <form name="zipCodeForm" novalidate>
+            <md-input-container class="md-block">
+                <label>Enter your ZIP code</label>
+                <input ng-model="vm.model.zipCode" ng-change="vm.model.zipCodeWasChanged()" type="tel" ng-pattern="/^[0-9]{5}$/" name="zipCode" required>
+                <div ng-messages="zipCodeForm.zipCode.$error" ng-if="zipCodeForm.zipCode.$touched" class="mt-validation-messages">
+                    <div ng-message="required">ZIP code is required</div>
+                    <div ng-message="pattern">ZIP code does not fit pattern</div>
+                </div>
+                <div ng-messages="zipCodeForm.zipCode.$error" ng-if="!zipCodeForm.zipCode.$touched" class="mt-validation-messages"></div>
+            </md-input-container>
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <div class="mask-btns" ng-click="vm.model.checkZipCodeFormat()">
+                        <div class="action-button green-btn big-btn">Submit</div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row" ng-show="!vm.model.zipCodeIsValid">
+    <div class="col-xs-12 text-left">
+        <p class="text-left text-main-color" style="font-size: 14px;" >Leave your email below and we'll prioritize service in your area!</p>
+    </div>
+</div>
+<div ng-show="!vm.model.zipCodeIsValid" class="row">
+    <div class="col-xs-12">
+        <form name="enteremail" novalidate>
+            <md-input-container class="md-block" style="padding-bottom: 0">
+                <label>Enter your Email</label>
+                <input ng-model="vm.model.userEmail" type="text" name="emailzip" required ng-pattern="/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/">
+                <div ng-messages="enteremail.emailzip.$error" ng-if="enteremail.emailzip.$touched" class="mt-validation-messages">
+                    <div ng-message="required">Email is required</div>
+                    <div ng-message="pattern">Email does not fit pattern</div>
+                </div>
+                <div ng-messages="enteremail.emailzip.$error" ng-if="!enteremail.emailzip.$touched" class="mt-validation-messages"></div>
+            </md-input-container>
+        </form>
+    </div>
+</div>
+<div class="row" ng-show="!vm.model.zipCodeIsValid">
+    <div class="col-xs-12 text-center">
+        <div class="mask-btns" ng-click="vm.menu.backToEnterZipCode()">
+            <div class="action-button grey-btn">Back</div>
+        </div>
+        <div class="mask-btns" ng-click="vm.menu.subscribeByEmail()">
+            <div class="action-button green-btn big-btn">Send</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    ga('send', 'event', 'page', 'check_zip_code_page');
+</script>

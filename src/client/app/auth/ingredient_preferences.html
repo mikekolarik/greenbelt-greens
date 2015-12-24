@@ -1,0 +1,107 @@
+<div mt-backstage class="backstage" style="display: block;">
+    <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+    </div>
+</div>
+
+<div id="container" style="-webkit-overflow-scrolling: touch;" resizable ng-style="{height: windowHeight - 68}" class="row">
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <mt-progress-bar number-of-dots="7" selected-index="2"></mt-progress-bar>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <h2 class="text-center">
+                <strong>Ingredient categories</strong>
+                <img src="../images/information.svg" width="34" style="margin-top: -5px;" ng-hide="vm.model.infoBlocks['ingredient_categories']" ng-click="vm.model.infoBlocks['ingredient_categories'] = !vm.model.infoBlocks['ingredient_categories']">
+                <img src="../images/close.svg" ng-show="vm.model.infoBlocks['ingredient_categories']" ng-click="vm.model.infoBlocks['ingredient_categories'] = !vm.model.infoBlocks['ingredient_categories']">
+            </h2>
+            <p id="infoBlock" class="infoBlock" ng-show="vm.model.infoBlocks['ingredient_categories']">
+                {{getInfoByKey('ingredient_categories')}}
+            </p>
+            <p class="text-center">Check our work! We've pre-excluded ingredients based on your preferences, but now is your chance to select or deselect ingredients on your own.</p>
+        </div>
+    </div>
+    <div class="row">
+    <div set-class-when-at-top="fix-to-top" container="'#container'" spacer="'#spacer'" offset="0" class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <nav du-scroll-container="container" class="fixed-header row">
+                    <table class="table scrolled-table">
+                        <tr>
+                            <td ng-click="vm.menu.clickTab(false)" ng-repeat="cg in vm.model.user.data.categoryGroups | orderBy: 'order_index'" class="text-center">
+                                <a href="#{{cg.title}}" du-smooth-scroll du-scrollspy class="scrolled-table-menu-link"><small>{{cg.title}}</small></a>
+                            </td>
+                            <td ng-click="vm.menu.clickTab(true)">
+                                <a href="#" class="scrolled-table-menu-link" style="color: red;"><small>Excluded</small></a>
+                            </td>
+                        </tr>
+                    </table>
+                </nav>
+            </div>
+
+        </div>
+
+    </div>
+    <!--<div id="spacer"></div>-->
+
+    <div du-scroll-container class="container ingredient" resizable ng-style="{minHeight: windowHeight - 107 - 121}">
+    <!--<div du-scroll-container class="container bg-white">-->
+        <div ng-if="!vm.view.showExcluded" class="row">
+            <div id="{{categoryGroup.title}}" ng-repeat="categoryGroup in vm.model.user.data.categoryGroups | orderBy: 'order_index'" ng-scroll="vm.menu.scrolled($event)" class="col-xs-12">
+                <div class="text-green text-uppercase" style="padding: 10px 5px;margin-top: 10px;">
+                    <strong>{{categoryGroup.title}}</strong>
+                </div>
+                <div ng-repeat="ingredientCategory in categoryGroup.ingredient_categories | orderBy:'title'" class="col-xs-12 category-group">
+                    <div ng-click="vm.menu.toggleIngredientCategory(ingredientCategory.id)" class="text-green" style="padding: 10px 0;margin-top: 10px;">
+                        {{ingredientCategory.title}} ({{vm.menu.countSelectedInCategory(ingredientCategory)}}/{{ingredientCategory.ingredients.length}})
+                    </div>
+                    <div id="ingredient-category-{{ingredientCategory.id}}" style="display:none;">
+                        <md-divider></md-divider>
+                        <div ng-repeat="ingredient in ingredientCategory.ingredients | orderBy:'title'" ng-click="ingredient.selected = !ingredient.selected" class="ingridients">
+                            <div class="col-xs-12">
+                                <span class="{{ingredient.selected ? 'ingridients-select active' : 'ingridients-select'}}"></span>
+                                <span class="ingridients-type text-main-color">{{ingredient.title}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div ng-if="vm.view.showExcluded" class="row">
+            <div ng-repeat="categoryGroup in vm.model.user.data.categoryGroups | orderBy: 'order_index'" class="col-xs-12">
+                <div ng-repeat="ingredientCategory in categoryGroup.ingredient_categories | orderBy:'title'" class="col-xs-12 category-group">
+                    <!--<h3>{{ingredientCategory.title}}</h3>-->
+                    <div ng-if="!ingredient.selected" ng-repeat="ingredient in ingredientCategory.ingredients | orderBy:'title'" ng-click="ingredient.selected = !ingredient.selected"  class="ingridients row">
+                        <div class="col-xs-12 excluded">
+                            <span class="{{ingredient.selected ? 'ingridients-select active' : 'ingridients-select'}}"></span>
+                            <span class="ingridients-type text-main-color">{{ingredient.title}}</span><br>
+                            <span class="ingridients-category text-green"><small>{{ingredientCategory.title}}</small></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+<div class="row bottom-btns">
+    <div class="col-xs-12 text-center">
+        <div class="mask-btns" ng-click="vm.menu.goToNutritionGoals()">
+            <div class="action-button grey-btn">Back</div>
+        </div>
+        <div class="mask-btns" ng-click="vm.menu.goToExampleMeals()">
+            <div class="action-button green-btn big-btn">Next</div>
+        </div>
+        <img src="../images/howitworks.svg" ng-click="showPopoverContent()" width="44" class="howitworks-icon">
+    </div>
+</div>
+
+<script>
+    ga('send', 'event', 'page', 'ingredients_page');
+</script>

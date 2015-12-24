@@ -1,0 +1,33 @@
+<md-dialog aria-label="" style="max-width: 500px;width: 500px;z-index: 9999; padding:10px 40px;">
+    <div class="close-window" ng-click="vm.menu.close()"></div>
+    <div style="position: relative;">
+        <div ng-click="vm.menu.carouselPrev()" class="popover-btn slide-prev"></div>
+        <div ng-click="vm.menu.carouselNext()" class="popover-btn slide-next"></div>
+        <h1 class="text-center">How It Works</h1>
+        <data-owl-carousel class="owl-carousel owl-theme content-carousel" id="content-carousel" data-options="{
+        loop:true,
+        margin:10,
+        responsiveClass:true,
+        items: 1
+        }">
+            <div ng-repeat="popoverContent in vm.model.popoverContent.popoverContents | orderBy: 'order_index'" owl-carousel-item="">
+                <div class="owl-image text-center" layout="column">
+                    <img ng-src="{{popoverContent.picture}}" class="popover-image">
+                </div>
+                <!--<h3>Review your customized menu</h3>-->
+                <p style="padding: 0;margin: 0;">
+                    {{popoverContent.content}}
+                </p>
+            </div>
+        </data-owl-carousel>
+    </div>
+
+</md-dialog>
+
+<script>
+    if (window.location.pathname == '/') {
+        ga('send', 'event', 'page', 'how_it_works_on_landing_button');
+    } else {
+        ga('send', 'event', 'page', 'how_it_works_button');
+    }
+</script>

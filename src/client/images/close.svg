@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="28px" height="28px" viewBox="0 0 49 49" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.2 (15857) - http://www.bohemiancoding.com/sketch -->
+    <title>information_close</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="X--Preview-Copy" sketch:type="MSArtboardGroup" transform="translate(-491.000000, -102.000000)">
+            <g id="information_close" sketch:type="MSLayerGroup" transform="translate(491.000000, 102.000000)">
+                <path d="M24.2841979,48.5683958 C37.6959901,48.5683958 48.5683958,37.6959901 48.5683958,24.2841979 C48.5683958,10.8724057 37.6959901,0 24.2841979,0 C10.8724057,0 0,10.8724057 0,24.2841979 C0,37.6959901 10.8724057,48.5683958 24.2841979,48.5683958 Z" id="Oval-76-Copy-2" fill="#0B9384" sketch:type="MSShapeGroup"></path>
+                <path d="M14.3975471,13.8232694 C15.6864576,12.5336632 17.776618,12.534087 19.0639606,13.8221244 L34.4977671,29.2642615 C35.7860455,30.5532354 35.7858166,32.643304 34.4966227,33.9331937 L34.4966227,33.9331937 C33.2077122,35.2228 31.1175518,35.2223762 29.8302092,33.9343387 L14.3964028,18.4922016 C13.1081243,17.2032278 13.1083532,15.1131592 14.3975471,13.8232694 L14.3975471,13.8232694 L14.3975471,13.8232694 Z" id="Rectangle-9-Copy-6" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+                <path d="M14.3970898,33.9336513 C13.1081793,32.6440451 13.1086029,30.5527565 14.3959455,29.264719 L29.8297519,13.822582 C31.1180304,12.5336081 33.2069715,12.5338372 34.4961654,13.8237269 L34.4961654,13.8237269 C35.7850759,15.1133332 35.7846524,17.2046217 34.4973098,18.4926592 L19.0635033,33.9347963 C17.7752248,35.2237701 15.6862837,35.223541 14.3970898,33.9336513 L14.3970898,33.9336513 L14.3970898,33.9336513 Z" id="Rectangle-9-Copy-7" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>

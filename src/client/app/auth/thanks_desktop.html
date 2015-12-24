@@ -1,0 +1,32 @@
+<div mt-backstage class="backstage" style="display: block;">
+    <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+    </div>
+</div>
+
+<page-desktop-header></page-desktop-header>
+<div class="main row" resizable ng-style="{minHeight: windowHeight - 62 - 41}">
+    <div class="col-xs-4">
+        <div class="row top-margin">
+            <div class="col-xs-12">
+                <p class="description">Your referral code is <strong>{{vm.model.user.referralCode}}</strong></p>
+            </div>
+            <div class="col-xs-12">
+                <p class="description">Every time a friend signs up with your invite code, you'll earn them a free salad ($10). After their first order, you'll also receive a free salad ($10), which will be applied to your account automatically. Happy eating!</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-8 none-right-padding">
+        <div class="image">
+            <div class="logo"></div>
+            <img ng-src="{{vm.model.images[0].picture}}" alt="Thank you"  resizable ng-style="{height: windowHeight - 62 - 41}" class="fill-image">
+        </div>
+    </div>
+</div>
+<page-desktop-footer></page-desktop-footer>
+
+<script>
+    ga('send', 'event', 'page', 'thank_you_page');
+</script>

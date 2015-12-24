@@ -1,0 +1,96 @@
+<div mt-backstage class="backstage" style="display: block;">
+    <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 text-center">
+        <mt-progress-bar number-of-dots="7" selected-index="5"></mt-progress-bar>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <h2 class="text-center">
+            Account creation
+        </h2>
+        <!--<p class="text-center">
+            Details
+            <img src="../images/information.svg" width="34" style="margin-top: -5px;" ng-hide="vm.model.infoBlocks['account_creation_details']" ng-click="vm.model.infoBlocks['account_creation_details'] = !vm.model.infoBlocks['account_creation_details']">
+            <img src="../images/close.svg" ng-show="vm.model.infoBlocks['account_creation_details']" ng-click="vm.model.infoBlocks['account_creation_details'] = !vm.model.infoBlocks['account_creation_details']">
+        </p>-->
+        <p id="infoBlock" class="infoBlock" ng-show="vm.model.infoBlocks['account_creation_details']">
+            {{getInfoByKey('account_creation_details')}}
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 text-center">
+        <div ng-click="vm.menu.connectWithFacebook()" class="small-btn fb-btn">Complete with Facebook</div>
+    </div>
+    <p class="text-center" style="margin-bottom: 0;">
+        or sign-up below
+    </p>
+</div>
+
+<div class="row padding-for-footer">
+    <div class="col-xs-12">
+        <div class="col-xs-12">
+            <form class="reg-form" name="userAccount" novalidate>
+                <div class="row">
+                    <md-input-container class="col-xs-12">
+                        <label>Email</label>
+                        <input name="email" ng-model="vm.model.user.data.email" ng-change="vm.menu.clearEmailError()" type="email" ng-pattern="/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/" required>
+                        <div ng-messages="userAccount.email.$error" ng-if="userAccount.email.$touched" class="mt-validation-messages">
+                            <div ng-message="required" class="message-error">Email is required</div>
+                            <div ng-message="pattern"  class="message-error">Email does not fit pattern</div>
+                            <div ng-message="emailExists">Email already used</div>
+                        </div>
+                        <div ng-messages="userAccount.email.$error" ng-if="!userAccount.email.$touched" class="mt-validation-messages"></div>
+                    </md-input-container>
+                </div>
+                <div class="row">
+                    <md-input-container class="col-xs-12">
+                        <label>Password</label>
+                        <input name="password" ng-model="vm.model.user.data.password" type="password" ng-minlength="8" required>
+                        <div ng-messages="userAccount.password.$error" ng-if="userAccount.password.$touched" class="mt-validation-messages">
+                            <div ng-message="required"  class="message-error">Password is required</div>
+                            <div ng-message="minlength"  class="message-error">Password is too short</div>
+                        </div>
+                        <div ng-messages="userAccount.password.$error" ng-if="!userAccount.password.$touched" class="mt-validation-messages"></div>
+                    </md-input-container>
+                </div>
+                <div class="row">
+                    <md-input-container class="col-xs-12">
+                        <label>Password Verify</label>
+                        <input name="passwordVerify" ng-model="vm.model.user.data.passwordConfirm" type="password" ng-minlength="8" required
+                               mt-compare-to="vm.model.user.data.password">
+                        <div ng-messages="userAccount.passwordVerify.$error" ng-if="userAccount.passwordVerify.$touched" class="mt-validation-messages">
+                            <div ng-message="required"  class="message-error">Password is required</div>
+                            <div ng-message="minlength"  class="message-error">Password is too short</div>
+                            <div ng-message="mtCompareTo"  class="message-error">Passwords do not match</div>
+                        </div>
+                        <div ng-messages="userAccount.passwordVerify.$error" ng-if="!userAccount.passwordVerify.$touched" class="mt-validation-messages"></div>
+                    </md-input-container>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="row bottom-btns">
+    <div class="col-xs-12 text-center">
+        <div class="mask-btns" ng-click="vm.menu.goToTweakYourPlan()">
+            <div class="action-button grey-btn">Back</div>
+        </div>
+        <div class="mask-btns" ng-click="vm.menu.goDeliveryPayment()">
+            <div class="action-button green-btn big-btn">Next</div>
+        </div>
+        <img src="../images/howitworks.svg" ng-click="showPopoverContent()" width="44" class="howitworks-icon">
+    </div>
+</div>
+
+<script>
+    ga('send', 'event', 'page', 'account_creation_page');
+</script>

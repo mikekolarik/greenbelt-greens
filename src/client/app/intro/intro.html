@@ -1,0 +1,72 @@
+<div mt-backstage class="backstage" style="display: block;">
+    <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+    </div>
+</div>
+
+<div id="intro-container">
+    <div class="row" ng-if="ic.model.imagesLoaded">
+        <data-owl-carousel id="sync-carousel-id" class="owl-carousel owl-theme" data-options="{
+        loop:true,
+        margin:10,
+        responsiveClass:true,
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:2
+            },
+            1000:{
+                items:3
+            }
+        }
+        }" class="col-xs-12">
+            <div ng-repeat="intro in ic.model.listOfIntros | orderBy: 'order_index'" owl-carousel-item="">
+                <div class="owl-image" layout="column">
+                    <div class="logo"></div>
+                    <img ng-src="{{intro.picture}}">
+                </div>
+                <h2>
+                    {{intro.title}}
+                </h2>
+                <p>
+                    {{intro.description}}
+                </p>
+            </div>
+        </data-owl-carousel>
+    </div>
+    <div class="row btn-padding-block" style="padding-top: 5px;">
+        <div class="col-xs-12 text-center">
+            <div class="mask-btns" ng-click="ic.menu.goToSignUp()">
+                <div class="action-button orange-btn">Sign up</div>
+            </div>
+            <!--<div class="mask-btns">-->
+            <!--&lt;!&ndash;<div class="action-button green-btn">Sign in</div>&ndash;&gt;-->
+            <!--</div>-->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <hr class="divider">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <div class="how-it-works" ng-click="showPopoverContent()">
+                <div class="cursive how-it-works-text">How it works?<span class="next"></span></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 text-center green-footer">
+            <p class="copyright" layout-margin>&copy;GreenbeltGreens 2015<br><a href="#" ng-click="ic.menu.popupTermsOfUse()">Terms and Conditions</a></p>
+        </div>
+    </div>
+</div>
+
+<script>
+    ga('send', 'event', 'page', 'landing_page');
+</script>

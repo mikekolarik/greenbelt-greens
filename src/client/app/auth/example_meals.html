@@ -1,0 +1,99 @@
+<div mt-backstage class="backstage" style="display: block;">
+    <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 text-center">
+        <mt-progress-bar number-of-dots="7" selected-index="3"></mt-progress-bar>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <h2 class="text-center">
+            <strong>Testimonials</strong>
+        </h2>
+        <p class="text-center">Perfect! We'll send you fresh, customized  menus each week based on your profile. Here are some examples of what others are currently enjoying!</p>
+    </div>
+</div>
+<div class="row padding-for-footer">
+    <div ng-if="vm.model.imagesLoaded" style="position:relative;">
+        <div ng-click="vm.menu.carouselPrev()" class="slide-btn slide-prev"></div>
+        <div ng-click="vm.menu.carouselNext()" class="slide-btn slide-next"></div>
+        <data-owl-carousel id="ex-meal-carousel" class="owl-carousel owl-theme" data-options="{
+        loop:true,
+        margin:10,
+        dots: false,
+        responsiveClass:true,
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:2
+            },
+            1000:{
+                items:3
+            }
+        }
+        }" layout="row">
+            <div ng-repeat="meal in vm.model.exampleMeals" owl-carousel-item="" class="col-xs-12">
+                <div class="row hook"></div>
+                <div class="box-shadow">
+                    <div class="user-avatar text-center row">
+                        <img ng-src="{{meal.user_avatar}}">
+                        <small>{{meal.user_name}}</small>
+                    </div>
+                    <div class="row attr-btns">
+                        <div class="col-xs-12 text-center">
+                            <div class="pink-btn small-btn" ng-repeat="user_goal in meal.user_goals">{{user_goal}}</div>
+                        </div>
+                        <div class="col-xs-12 text-center">
+                            <div class="green-btn small-btn" ng-repeat="user_goal in meal.dietary_preferences">{{user_goal}}</div>
+                        </div>
+                    </div>
+                    <div class="owl-image">
+                        <div class="dish-info">
+                            <div class="col-xs-3">
+                                <strong>{{meal.calories}}</strong><br>
+                                <small>Calories</small>
+                            </div>
+                            <div class="col-xs-3">
+                                <strong>{{meal.carbs}}</strong><br>
+                                <small>Carbs</small>
+                            </div>
+                            <div class="col-xs-3">
+                                <strong>{{meal.fat}}</strong><br>
+                                <small>Fat</small>
+                            </div>
+                            <div class="col-xs-3">
+                                <strong>{{meal.protein}}</strong><br>
+                                <small>Protein</small>
+                            </div>
+                        </div>
+                        <img ng-src="{{meal.meal_photo}}">
+                    </div>
+                    <p class="meal-description"><small>{{meal.meal_ingredients}}</small></p>
+                </div>
+            </div>
+        </data-owl-carousel>
+    </div>
+</div>
+<div class="row bottom-btns">
+    <div class="col-xs-12 text-center">
+        <div class="mask-btns" ng-click="vm.menu.goToIngredients()">
+            <div class="action-button grey-btn">Back</div>
+        </div>
+        <div class="mask-btns" ng-click="vm.menu.goToTweakYourPlan()">
+            <div class="action-button green-btn big-btn">Next</div>
+        </div>
+        <img src="../images/howitworks.svg" ng-click="showPopoverContent()" width="44" class="howitworks-icon">
+    </div>
+</div>
+
+<script>
+    ga('send', 'event', 'page', 'testimonials_page');
+</script>
