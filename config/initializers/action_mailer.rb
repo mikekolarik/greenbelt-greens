@@ -1,8 +1,8 @@
 if Rails.env.development? || Rails.env.test? || Rails.env.production?
   SMTP_ADDRESS  = 'smtp.mandrillapp.com'
   SMTP_DOMAIN   = 'greenbeltgreens.com'
-  SMTP_PASSWORD = ENV('MANDRILL_APIKEY')    # '9PVz6xAJtMm6X5LZ2CQKeQ'
-  SMTP_USERNAME = ENV('MANDRILL_USERNAME')  # 'app44267128@heroku.com'
+  SMTP_PASSWORD = ENV['MANDRILL_APIKEY']    # '9PVz6xAJtMm6X5LZ2CQKeQ'
+  SMTP_USERNAME = ENV['MANDRILL_USERNAME']  # 'app44267128@heroku.com'
   ADMIN_EMAIL   = 'admin@greenbeltgreens.com'
 
   Rails.application.configure do
