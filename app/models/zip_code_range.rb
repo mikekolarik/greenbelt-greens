@@ -6,5 +6,5 @@ class ZipCodeRange < ActiveRecord::Base
   validates_length_of :zip_from, :minimum => 4, :maximum => 5, :allow_blank => false
   validates_length_of :zip_to, :minimum => 4, :maximum => 5, :allow_blank => false
 
-  validates :zip_to, numericality: { greater_than: :zip_from }
+  #validates :zip_to, numericality: { greater_than: :zip_from }
 end
