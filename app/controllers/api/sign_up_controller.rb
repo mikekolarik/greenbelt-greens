@@ -18,7 +18,7 @@ class Api::SignUpController < ApplicationController
       if service.user.errors.full_messages.count > 0
         render :json => {:success => 1, :message => {
                      error: {
-                         message: service.user.errors.full_message
+                         message: service.user.errors.full_messages
                      }
                  }
                }
