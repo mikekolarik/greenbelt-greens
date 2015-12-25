@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   def cors_set_access_control_headers
     tmp_origin = request.headers['origin']
-    if %w(http://localhost:3000 http://mealticket.agilie.com http://greenbeltgreens.com).include?(tmp_origin)
+    if %w(http://localhost:3000 http://mealticket.agilie.com http://greenbeltgreens.com http://stage.greenbeltgreens.com).include?(tmp_origin)
       headers['Access-Control-Allow-Origin'] = tmp_origin
     end
 
