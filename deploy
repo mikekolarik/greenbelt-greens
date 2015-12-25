@@ -13,6 +13,13 @@ then
     echo "=== End of deploying to = production ====="
 fi
 
+if [ "$1" == "stage" ]
+then
+    echo "=== Start deploying to = production ======"
+    gulp clean && NODE_ENV=development gulp build && gulp upload-stage
+    echo "=== End of deploying to = production ====="
+fi
+
 if [ "$1" == "dev" ]
 then
     echo "=== Start deploying to = development ======"
