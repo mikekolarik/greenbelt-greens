@@ -10,7 +10,7 @@ if Rails.env.production?
       aws_secret_access_key: 'MPwtBz71PnOYfvOHn+KymuLICvlEAlST+Q2mPAh8', # required
       region: 'us-west-1'
     }
-    config.fog_directory  = 'greenbeltgreensuploads' # required
+    config.fog_directory  = ENV['S3_BUCKET_UPLOADS'] #'greenbeltgreensuploads' # required
   end
 
 else
