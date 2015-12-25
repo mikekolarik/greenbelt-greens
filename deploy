@@ -16,7 +16,7 @@ fi
 if [ "$1" == "stage" ]
 then
     echo "=== Start deploying to = production ======"
-    gulp clean && NODE_ENV=production gulp build && gulp upload-stage
+    gulp clean && NODE_ENV=development gulp build && gulp upload-stage
     echo "=== End of deploying to = production ====="
 fi
 
