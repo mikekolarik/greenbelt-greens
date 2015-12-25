@@ -58,6 +58,13 @@ gulp.task('scp:prod-1', function(cb) {
     }, cb);
 });
 
+gulp.task('upload-stage', function() {
+    var awsCredentials = JSON.parse(require('fs').readFileSync(
+        userHome + '/.elasticbeanstalk/aws_greenbeltgreens_stage.json'
+    ));
+    return gulp.src(config.build + '**').pipe(s3(awsCredentials));
+});
+
 gulp.task('upload-live', function() {
     var awsCredentials = JSON.parse(require('fs').readFileSync(
         userHome + '/.elasticbeanstalk/aws_greenbeltgreens_live.json'
