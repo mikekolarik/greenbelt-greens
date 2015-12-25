@@ -138,7 +138,7 @@
                 'referral_code': vm.model.user.data.referralCode
             }).then(function (received) {
                 if (received.data.success === 0) {
-                    vm.model.user.data.discount = 10;
+                    vm.model.user.data.discount = received.data.result.discount / 100;
                     vm.model.disableCode = true;
                 } else {
                     $scope.referralCode.referralCode.$setValidity('code_error', false);
