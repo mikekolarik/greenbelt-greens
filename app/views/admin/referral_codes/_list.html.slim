@@ -3,12 +3,15 @@ table.table.table-striped
   thead
     tr
       th Secret code
+      th Discount (in cents)
       th Owner
       th Referrals
   - @referral_codes.each do |referral_code|
     tr
       td
         = link_to referral_code.secret_code, admin_referral_code_path(referral_code)
+        td
+          = referral_code.discount_value || CommonParam.get_param('discount_value')
         td
           = referral_code.owner_email
         td

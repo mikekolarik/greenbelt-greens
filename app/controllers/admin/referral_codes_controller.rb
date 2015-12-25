@@ -42,6 +42,6 @@ class Admin::ReferralCodesController < Admin::ApplicationController
 
   def permitted_params
       { referral_code:
-          params.fetch(:referral_code, {}).permit(:secret_code) }
+          params.fetch(:referral_code, {}).permit(:secret_code, :discount_value) }
   end
 end

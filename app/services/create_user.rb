@@ -15,11 +15,12 @@ class CreateUser
           if _send_request_to_stripe!(user: @user, card_params: card_params) &&
              _create_user_ingredients_reference!(user: @user, ingredient_ids: user_params[:ingredient_ids])
             unless referral_code.blank?
-              update_account_balance(@user)
               ref_code = ReferralCode.where(secret_code: referral_code).first
               code_owner = User.where(id: ref_code.user_id).first
+              discount_value = ref_code.discount_value || CommonParam.get_param('discount_value')
+              update_account_balance(@user, discount_value)
               unless code_owner.nil?
-                update_account_balance(code_owner) unless code_owner.customer_id.blank?
+                update_account_balance(code_owner, discount_value) unless code_owner.customer_id.blank?
               end
 
 
@@ -189,7 +190,7 @@ class CreateUser
     end
   end
 
-  def update_account_balance(user)
+  def update_account_balance(user, discount_value)
     #   Get customer balance
     uri1 = URI.parse("https://api.stripe.com/v1/customers/#{user.customer_id}")
     http = Net::HTTP.new(uri1.host, uri1.port)
@@ -207,7 +208,7 @@ class CreateUser
                                     'Content-Type' =>'application/json',
                                     'Authorization' => "Bearer #{STRIPE_KEY}")
       data = {
-          account_balance: current_balance - 1000
+          account_balance: current_balance - discount_value
       }
       request.set_form_data(data)
       response = http.request(request)

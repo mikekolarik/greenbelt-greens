@@ -7,7 +7,10 @@
         - @referral_code.errors.full_messages.each do |msg|
           li
             = msg
+  h4 Secret code
   = f.text_field :secret_code, class: "m-form-control", placeholder: "Secret code"
+  h4 Discount (in cents)
+  = f.text_field :discount_value, class: "m-form-control", placeholder: CommonParam.get_param('discount_value')
 
   br/
   = f.submit class: "m-button-submit"

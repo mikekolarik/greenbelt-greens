@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     resources :zip_code_ranges
     resources :categories_groups
     resources :meal_types
+    resources :common_params
   end
 
   namespace :api do

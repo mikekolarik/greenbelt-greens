@@ -1,0 +1,15 @@
+= form_for [:admin, @common_param] do |f|
+  - if @common_param.errors.any?
+    #error_explanation
+      h2= pluralize(@common_param.errors.count, "errors")
+      br/
+      ul
+        - @common_param.errors.full_messages.each do |msg|
+          li
+            = msg
+  h4 Global discount (in cents)
+  = f.text_field :discount_value, class: "m-form-control", placeholder: 'Discount'
+
+  br/
+  = f.submit class: "m-button-submit"
+  br/
