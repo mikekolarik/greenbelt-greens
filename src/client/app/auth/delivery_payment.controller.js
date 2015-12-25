@@ -69,9 +69,9 @@
                         'subscription_id': 1,
                         'facebook_id': UserModel.data.facebookId,
                         'password': UserModel.data.password,
-                        'total_amount': UserModel.data.selectedPlan.numberOfMeals *
+                        'total_amount': Math.max(0, UserModel.data.selectedPlan.numberOfMeals *
                                         (UserModel.data.selectedPlan.price + UserModel.data.selectedPlan.delivery) -
-                                        UserModel.data.discount,
+                                        UserModel.data.discount),
                         'first_delivery_date': vm.model.deliveryDate,
                         'number_of_meals': UserModel.data.selectedPlan.numberOfMeals,
 
