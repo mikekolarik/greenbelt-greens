@@ -5,8 +5,6 @@ class Api::ReferralCodesController < ApplicationController
 
   def check_code_validity
     ref_code = ReferralCode.where(secret_code: params[:referral_code]).first
-
-
     unless ref_code.blank?
       discount_value = ref_code.discount_value || CommonParam.get_param('discount_value')
       render json: {
