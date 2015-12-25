@@ -12,6 +12,7 @@
     "angular-messages": "^1.4.8",
     "body-parser": "^1.8.2",
     "express": "^4.9.3",
+    "gulp-s3": "^0.3.0",
     "morgan": "^1.1.1",
     "serve-favicon": "^2.0.1"
   },
