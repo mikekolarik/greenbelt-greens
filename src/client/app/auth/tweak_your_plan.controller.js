@@ -33,7 +33,7 @@
                     numberOfMeals: 4,
                     price: 9.99,
                     picture: '../images/one_persone.svg',
-                    delivery: 2
+                    delivery: 1.50
                 },
                 {
                     id: 10028,
@@ -41,7 +41,7 @@
                     numberOfMeals: 8,
                     price: 9.99,
                     picture: '../images/two_persone.svg',
-                    delivery: 1
+                    delivery: 0
                 }
             ],
             deliveryRangesWeekend: [
