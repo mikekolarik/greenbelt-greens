@@ -7,6 +7,7 @@ class Api::SignUpController < ApplicationController
   def create
     service = CreateUser.call(user_params: permitted_params[:user], card_params: permitted_params_for_card[:user], referral_code: params[:user][:referral_code])
     if service.success
+      RemoveUserFromAbandonedListJob.perform_later(service.user.email)
       render :json => {
                  :success => 0,
                  :result => {
@@ -32,9 +33,8 @@ class Api::SignUpController < ApplicationController
 
   def check_if_user_exists
     user = User.where(email: params[:email]).first
-    puts 'user'
-    puts user
     if user.nil?
+      SubscribeUserToAbandonedListJob.perform_later(params[:email])
       render json: { success: 0 }
     else
       render json: { success: 3, message: 'User already exists' }
