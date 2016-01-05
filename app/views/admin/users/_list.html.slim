@@ -1,11 +1,13 @@
 table.table.table-striped
   thead
     tr
+      th Active
       th User
       th Admin
       th
   - @users.each do |user|
     tr
+      td = user.active?
       td = link_to user.email, edit_admin_user_path(user.id)
       td = user.admin?
       td = link_to "Switch", switch_value_admin_users_path(id: user.id), method: :post

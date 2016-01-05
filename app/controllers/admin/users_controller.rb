@@ -73,7 +73,7 @@ class Admin::UsersController < Admin::ApplicationController
                                        :email, :address1, :address2,
                                        :weekend_delivery_range, :weekday_delivery_range, :delivery_instructions, :phone,
                                        :meal_type_id, :password, :password_confirmation,
-                                       :admin) }
+                                       :admin, :active) }
   end
 
   def permitted_params_for_ingredients

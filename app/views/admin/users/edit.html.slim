@@ -79,6 +79,11 @@ h2 Edit User
       = f.select :admin, options_for_select([true, false], @user.admin), {}, class: "m-form-control"
   .row
     .col-xs-2
+      = f.label "Active", class: "h4"
+    .col-xs-2
+      = f.select :active, options_for_select([true, false], @user.active), {}, class: "m-form-control"
+  .row
+    .col-xs-2
       = f.label "Delivery Instructions", class: "h4"
     .col-xs-10
       - if @user.delivery_instructions.blank?
